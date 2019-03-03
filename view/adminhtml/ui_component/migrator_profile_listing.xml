@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">migrator_profile_listing.migrator_profile_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>migrator_profile_columns</spinner>
+		<deps>
+			<dep>migrator_profile_listing.migrator_profile_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">New Profile</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="migrator_profile_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>MageArab_Migrator::Profile</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="migrator_profile_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>profile_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="migrator_profile_columns">
+		<settings>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">migrator_profile_listing.migrator_profile_listing.migrator_profile_columns_editor</item>
+					<item name="target" xsi:type="string">applyAction</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">edit</item>
+						<item name="1" xsi:type="boolean">${ $.$data.rowIndex }</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>profile_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="profile_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="title">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Title</label>
+			</settings>
+		</column>
+		<column name="started_at">
+			<settings>
+				<filter>dateRange</filter>
+				<dataType>date</dataType>
+				<label translate="true">Last Run</label>
+			</settings>
+		</column>
+		<column name="rows_processed">
+			<settings>
+				<label translate="true">Rows</label>
+			</settings>
+		</column>
+		<column name="rows_errors">
+			<settings>
+				<label translate="true">Errors</label>
+			</settings>
+		</column>
+		<column name="profile_status">
+			<settings>
+				<filter>select</filter>
+				<dataType>select</dataType>
+				<options class="MageArab\Migrator\Model\Source\EnableDisable"/>
+				<label translate="true">Status</label>
+			</settings>
+		</column>
+		<column name="run_status">
+			<settings>
+				<filter>select</filter>
+				<dataType>select</dataType>
+				<options class="MageArab\Migrator\Model\Source\RunStatus"/>
+				<label translate="true">Activity</label>
+			</settings>
+		</column>
+		<column name="data_type">
+			<settings>
+				<filter>select</filter>
+				<dataType>select</dataType>
+				<label translate="true">Data Type</label>
+			</settings>
+		</column>
+		<column name="profile_type">
+			<settings>
+				<filter>select</filter>
+				<dataType>select</dataType>
+				<options class="MageArab\Migrator\Model\Source\ImportExport"/>
+				<label translate="true">Profile Type</label>
+			</settings>
+		</column>
+	</columns>
+	<actionsColumn class="MageArab\Migrator\Ui\Component\Listing\Column\ProfileActions" name="actions">
+		<settings>
+			<indexField>profile_id</indexField>
+		</settings>
+	</actionsColumn>
+</listing>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="MageArab::top_level" translate="title" module="MageArab_Migrator" parent="Magento_Backend::content" resource="Magento_Backend::content" sortOrder="9999" title="Migrator"/>
+		<add action="migrator/migrate/index" id="MageArab_Migrator::migrator_migrate" module="MageArab_Migrator" parent="MageArab::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Migrate"/>
+		<add action="migrator/profile/index" id="MageArab_Migrator::migrator_profile" module="MageArab_Migrator" parent="MageArab::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Profiles"/>
+		<add action="migrator/profile/index" id="MageArab_Migrator::migrator_config" module="MageArab_Migrator" parent="MageArab::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Configuration"/>
+	</menu>
+</config>

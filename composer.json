@@ -1,0 +1,28 @@
+{
+    "name": "magearab/module-migrator",
+    "description": "Import/Export magento 2 module that do it all",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "hadyfayed@gmail.com",
+            "name": "HadyFayed"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-simplexml": "*",
+        "ext-libxml": "*",
+        "ext-json": "*",
+        "league/csv": "~9.0",
+        "mustangostang/spyc": "~0.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "MageArab\\Migrator\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

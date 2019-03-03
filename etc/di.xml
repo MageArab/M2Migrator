@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="MageArab\Migrator\Api\ProfileRepositoryInterface" type="MageArab\Migrator\Model\ProfileRepository"/>
+	<preference for="MageArab\Migrator\Api\Data\ProfileInterface" type="MageArab\Migrator\Model\Data\Profile"/>
+	<preference for="MageArab\Migrator\Api\Data\ProfileSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="MageArab\Migrator\Model\ResourceModel\Profile\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">migrator_profile</argument>
+			<argument name="resourceModel" xsi:type="string">MageArab\Migrator\Model\ResourceModel\Profile\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="migrator_profile_listing_data_source" xsi:type="string">MageArab\Migrator\Model\ResourceModel\Profile\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="Import" xsi:type="object">MageArab\Migrator\Console\Command\Import</item>
+				<item name="Export" xsi:type="object">MageArab\Migrator\Console\Command\Export</item>
+				<item name="RunProfile" xsi:type="object">MageArab\Migrator\Console\Command\RunProfile</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

@@ -1,0 +1,215 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">migrator_profile_form.profile_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="MageArab\Migrator\Block\Adminhtml\Profile\Edit\BackButton" name="back"/>
+			<button class="MageArab\Migrator\Block\Adminhtml\Profile\Edit\DeleteButton" name="delete"/>
+			<button class="MageArab\Migrator\Block\Adminhtml\Profile\Edit\SaveButton" name="save"/>
+			<button class="MageArab\Migrator\Block\Adminhtml\Profile\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<layout>
+			<navContainerName>left</navContainerName>
+			<type>tabs</type>
+		</layout>
+		<namespace>migrator_profile_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>migrator_profile_form.profile_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="profile_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="MageArab\Migrator\Model\Profile\DataProvider" name="profile_form_data_source">
+			<settings>
+				<requestFieldName>profile_id</requestFieldName>
+				<primaryFieldName>profile_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label translate="true">Profile Information</label>
+		</settings>
+		<field formElement="input" name="title" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Title</label>
+				<dataScope>title</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="profile_status" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">MageArab\Migrator\Model\Source\EnableDisable</item>
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Profile Status</label>
+				<dataScope>profile_status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="profile_type" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+				<item name="options" xsi:type="object">MageArab\Migrator\Model\Source\ImportExport</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Profile Type</label>
+				<dataScope>profile_type</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="media_type" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">MageArab\Migrator\Model\Source\MediaType</item>
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Media Type</label>
+				<dataScope>media_type</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="run_status" sortOrder="50">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">MageArab\Migrator\Model\Source\RunStatus</item>
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Run Status</label>
+				<dataScope>run_status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+	<fieldset name="profile_status">
+		<settings>
+			<label translate="true">Profile Status</label>
+		</settings>
+	</fieldset>
+	<fieldset name="file_options">
+		<settings>
+			<label translate="true">File Options</label>
+		</settings>
+	</fieldset>
+	<fieldset name="format_options">
+		<settings>
+			<label translate="true">Format Options</label>
+		</settings>
+	</fieldset>
+	<fieldset name="import_options">
+		<settings>
+			<label translate="true">Import Options</label>
+		</settings>
+	</fieldset>
+	<fieldset name="import_columns">
+		<settings>
+			<label translate="true">Import Columns</label>
+		</settings>
+	</fieldset>
+	<fieldset name="export_columns">
+		<settings>
+			<label translate="true">Export Columns</label>
+		</settings>
+	</fieldset>
+	<fieldset name="upload_files">
+		<settings>
+			<label translate="true">Upload Files</label>
+		</settings>
+	</fieldset>
+	<fieldset name="reindex">
+		<settings>
+			<label translate="true">Reindex</label>
+		</settings>
+		<!--<insertListing>-->
+			<!--<argument name="data" xsi:type="array">-->
+				<!--<item name="config" xsi:type="array">-->
+					<!--<item name="autoRender" xsi:type="string">true</item>-->
+				<!--</item>-->
+			<!--</argument>-->
+		<!--</insertListing>-->
+	</fieldset>
+	<fieldset name="log_form">
+		<settings>
+			<label translate="true">Logging Options</label>
+		</settings>
+		<field formElement="select" name="debug" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">MageArab\Migrator\Model\Source\YesNo</item>
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Log Debugging Information</label>
+				<dataScope>run_status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="minimum_log_level" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">MageArab\Migrator\Model\Source\LogLevel</item>
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Profile</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Minimum Log Level</label>
+				<dataScope>run_status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+	<fieldset name="profile_configuration">
+		<settings>
+			<label translate="true">Profile Configuration</label>
+		</settings>
+	</fieldset>
+</form>

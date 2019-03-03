@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="AdminhtmlControllerActionPredispatch">
+		<observer instance="MageArab\Migrator\Observer\AdminhtmlControllerActionPredispatch" name="Migrator_Observer_AdminhtmlControllerActionPredispatch"/>
+	</event>
+	<event name="CategoryUrlUpdateObserver">
+		<observer instance="MageArab\Migrator\Observer\CategoryUrlUpdateObserver" name="Migrator_Observer_CategoryUrlUpdateObserver"/>
+	</event>
+	<event name="ProductImageCacheFlushObserver">
+		<observer instance="MageArab\Migrator\Observer\ProductImageCacheFlushObserver" name="Migrator_Observer_ProductImageCacheFlushObserver"/>
+	</event>
+	<event name="ProductUrlUpdateObserver">
+		<observer instance="MageArab\Migrator\Observer\ProductUrlUpdateObserver" name="Migrator_Observer_ProductUrlUpdateObserver"/>
+	</event>
+</config>
