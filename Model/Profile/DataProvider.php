@@ -1,10 +1,10 @@
 <?php
 /**
  * Import/Export magento 2 module that do it all
- * Copyright (C) 2018  
- * 
+ * Copyright (C) 2018
+ *
  * This file included in MageArab/Migrator is licensed under OSL 3.0
- * 
+ *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
@@ -16,12 +16,10 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-
     protected $loadedData;
     protected $collection;
 
     protected $dataPersistor;
-
 
     /**
      * Constructor
@@ -63,14 +61,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
         }
         $data = $this->dataPersistor->get('migrator_profile');
-        
+
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('migrator_profile');
         }
-        
+
         return $this->loadedData;
     }
 }

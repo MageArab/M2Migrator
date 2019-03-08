@@ -11,13 +11,13 @@
 
 namespace MageArab\Migrator\Helper;
 
+use InvalidArgumentException;
 use MageArab\Migrator\Helper\Parsers\ArrayParser;
 use MageArab\Migrator\Helper\Parsers\CsvParser;
 use MageArab\Migrator\Helper\Parsers\JsonParser;
 use MageArab\Migrator\Helper\Parsers\Parser;
 use MageArab\Migrator\Helper\Parsers\XmlParser;
 use MageArab\Migrator\Helper\Parsers\YamlParser;
-use InvalidArgumentException;
 use Magento\Framework\App\Helper\AbstractHelper;
 
 class Formatter extends AbstractHelper
@@ -77,8 +77,7 @@ class Formatter extends AbstractHelper
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 

@@ -2,10 +2,10 @@
 
 namespace MageArab\Migrator\Helper\Parsers;
 
-use League\Csv\Exception;
-use MageArab\Migrator\Helper\ArrayHelpers;
 use InvalidArgumentException;
+use League\Csv\Exception;
 use League\Csv\Reader;
+use MageArab\Migrator\Helper\ArrayHelpers;
 
 class CsvParser extends Parser
 {

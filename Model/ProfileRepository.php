@@ -1,34 +1,33 @@
 <?php
 /**
  * Import/Export magento 2 module that do it all
- * Copyright (C) 2018  
- * 
+ * Copyright (C) 2018
+ *
  * This file included in MageArab/Migrator is licensed under OSL 3.0
- * 
+ *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
 
 namespace MageArab\Migrator\Model;
 
-use MageArab\Migrator\Model\ResourceModel\Profile\CollectionFactory as ProfileCollectionFactory;
-use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Framework\Api\ExtensibleDataObjectConverter;
 use MageArab\Migrator\Api\Data\ProfileInterfaceFactory;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
-use Magento\Framework\Reflection\DataObjectProcessor;
-use MageArab\Migrator\Api\ProfileRepositoryInterface;
-use Magento\Framework\Exception\CouldNotDeleteException;
-use MageArab\Migrator\Model\ResourceModel\Profile as ResourceProfile;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Exception\CouldNotSaveException;
 use MageArab\Migrator\Api\Data\ProfileSearchResultsInterfaceFactory;
+use MageArab\Migrator\Api\ProfileRepositoryInterface;
+use MageArab\Migrator\Model\ResourceModel\Profile as ResourceProfile;
+use MageArab\Migrator\Model\ResourceModel\Profile\CollectionFactory as ProfileCollectionFactory;
+use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Api\ExtensibleDataObjectConverter;
+use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Store\Model\StoreManagerInterface;
 
 class ProfileRepository implements ProfileRepositoryInterface
 {
-
     protected $searchResultsFactory;
 
     protected $profileFactory;
@@ -100,15 +99,15 @@ class ProfileRepository implements ProfileRepositoryInterface
             $storeId = $this->storeManager->getStore()->getId();
             $profile->setStoreId($storeId);
         } */
-        
+
         $profileData = $this->extensibleDataObjectConverter->toNestedArray(
             $profile,
             [],
             \MageArab\Migrator\Api\Data\ProfileInterface::class
         );
-        
+
         $profileModel = $this->profileFactory->create()->setData($profileData);
-        
+
         try {
             $this->resource->save($profileModel);
         } catch (\Exception $exception) {
@@ -140,22 +139,22 @@ class ProfileRepository implements ProfileRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->profileCollectionFactory->create();
-        
+
         $this->extensionAttributesJoinProcessor->process(
             $collection,
             \MageArab\Migrator\Api\Data\ProfileInterface::class
         );
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model->getDataModel();
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;

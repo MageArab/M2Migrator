@@ -13,7 +13,6 @@ namespace MageArab\Migrator\Controller\Adminhtml\Migrate;
 
 class Index extends \Magento\Backend\App\Action
 {
-
     protected $resultPageFactory;
 
     /**

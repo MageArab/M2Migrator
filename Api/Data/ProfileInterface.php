@@ -13,7 +13,6 @@ namespace MageArab\Migrator\Api\Data;
 
 interface ProfileInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-
     const PROFILE_TYPE = 'profile_type';
     const RUN_STATUS = 'run_status';
     const PROFILE_ID = 'profile_id';
@@ -46,7 +45,6 @@ interface ProfileInterface extends \Magento\Framework\Api\ExtensibleDataInterfac
      * @return \MageArab\Migrator\Api\Data\ProfileInterface
      */
     public function setTitle($title);
-
 
     /**
      * Get profile_type

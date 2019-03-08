@@ -22,8 +22,7 @@ class StringHelpers extends AbstractHelper
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context
-    )
-    {
+    ) {
         parent::__construct($context);
     }
 

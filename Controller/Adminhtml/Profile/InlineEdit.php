@@ -1,10 +1,10 @@
 <?php
 /**
  * Import/Export magento 2 module that do it all
- * Copyright (C) 2018  
- * 
+ * Copyright (C) 2018
+ *
  * This file included in MageArab/Migrator is licensed under OSL 3.0
- * 
+ *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
@@ -13,7 +13,6 @@ namespace MageArab\Migrator\Controller\Adminhtml\Profile;
 
 class InlineEdit extends \Magento\Backend\App\Action
 {
-
     protected $jsonFactory;
 
     /**
@@ -39,7 +38,7 @@ class InlineEdit extends \Magento\Backend\App\Action
         $resultJson = $this->jsonFactory->create();
         $error = false;
         $messages = [];
-        
+
         if ($this->getRequest()->getParam('isAjax')) {
             $postItems = $this->getRequest()->getParam('items', []);
             if (!count($postItems)) {
@@ -59,7 +58,7 @@ class InlineEdit extends \Magento\Backend\App\Action
                 }
             }
         }
-        
+
         return $resultJson->setData([
             'messages' => $messages,
             'error' => $error

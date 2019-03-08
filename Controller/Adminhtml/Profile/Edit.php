@@ -1,10 +1,10 @@
 <?php
 /**
  * Import/Export magento 2 module that do it all
- * Copyright (C) 2018  
- * 
+ * Copyright (C) 2018
+ *
  * This file included in MageArab/Migrator is licensed under OSL 3.0
- * 
+ *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
@@ -13,7 +13,6 @@ namespace MageArab\Migrator\Controller\Adminhtml\Profile;
 
 class Edit extends \MageArab\Migrator\Controller\Adminhtml\Profile
 {
-
     protected $resultPageFactory;
 
     /**
@@ -40,7 +39,7 @@ class Edit extends \MageArab\Migrator\Controller\Adminhtml\Profile
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('profile_id');
         $model = $this->_objectManager->create(\MageArab\Migrator\Model\Profile::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -52,7 +51,7 @@ class Edit extends \MageArab\Migrator\Controller\Adminhtml\Profile
             }
         }
         $this->_coreRegistry->register('migrator_profile', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
